@@ -9,6 +9,21 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// Set up mongoose connection
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+const mongoDB = 'mongodb+srv://opq:Pr5jHLAkLXcAsgtg@cluster0.rwiikl3.mongodb.net/local_library?retryWrites=true&w=majority';
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+// connect to mongodb
+// const dbURI = 'mongodb+srv://opq:Pr5jHLAkLXcAsgtg@cluster0.rwiikl3.mongodb.net/local_library?retryWrites=true&w=majority';
+// mongoose.connect(dbURI)
+//   .then((result) => app.listen(3000))
+//   .catch((err) => console.log(err))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
